@@ -105,7 +105,7 @@ docker run --name="MySQL" \
 --mount='type=volume,src=db,dst=/var/lib/mysql' \
 -e MYSQL_ROOT_PASSWORD="Jacob" \
 -e MYSQL_DATABASE="wordpress" \
--e MYSQL_USER="Jeanne" \
+-e MYSQL_USER="Mario" \
 -e MYSQL_PASSWORD="Jacob" \
 -d \
 mysql:latest
@@ -144,7 +144,7 @@ docker run --name="WordPress" \
 -p 80:80 \
 --mount='type=volume,src=wordpress,dst=/var/www/html' \
 -e WORDPRESS_DB_HOST="172.17.0.2" \
--e WORDPRESS_DB_USER=Jeanne \
+-e WORDPRESS_DB_USER=Mario \
 -e WORDPRESS_DB_PASSWORD=Jacob \
 -e WORDPRESS_DB_NAME=wordpress \
 -e WORDPRESS_DEBUG=1 \
