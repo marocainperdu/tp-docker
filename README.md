@@ -83,7 +83,7 @@ Enfin, vérifiez que vous pouvez exécuter les commandes docker sans sudo :
 docker --version
 docker run hello-world
 ```
-![Livrable 1](https://github.com/marocainperdu/tp-docker/blob/main/Livrable%202.png)
+![Livrable 2](https://github.com/marocainperdu/tp-docker/blob/main/Livrable%202.png)
 
 ## **Conteneur : Installer et Configurer MySQL**
 
