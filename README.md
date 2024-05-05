@@ -314,6 +314,8 @@ docker-compose up -d
 
 Vérifiez que votre pile logicielle fonctionne en accédant à WordPress dans votre navigateur à l'adresse `http://localhost`.
 
+![Livrable 4](https://github.com/marocainperdu/tp-docker/blob/main/Livrable%204.png)
+
 Pour arrêter et supprimer vos conteneurs, utilisez la commande suivante :
 
 ```bash
