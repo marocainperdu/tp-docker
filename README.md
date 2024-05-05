@@ -53,6 +53,8 @@ sudo docker run hello-world
 
 Vous devriez voir un message confirmant le succès de l'installation.
 
+![Livrable 1](https://github.com/marocainperdu/tp-docker/blob/main/Livrable%201.png)
+
 ---
 
 **Ajout d'Utilisateurs Autorisés au Groupe Docker**
@@ -171,4 +173,3 @@ docker stop MySQL WordPress
 ```
 
 ---
-![Livrable 1](https://imgur.com/us65qB4)
