@@ -1,9 +1,8 @@
 # Atelier docker - veille technologique
----
 
-**Procédure d'Installation de Docker Engine sur Ubuntu**
+## **Procédure d'Installation de Docker Engine sur Ubuntu**
 
----
+
 
 **Étape 1 : Désinstallation des Paquets Conflit**
 
@@ -55,24 +54,22 @@ Vous devriez voir un message confirmant le succès de l'installation.
 
 ![Livrable 1](https://github.com/marocainperdu/tp-docker/blob/main/Livrable%201.png)
 
----
 
-**Ajout d'Utilisateurs Autorisés au Groupe Docker**
+## **Ajout d'Utilisateurs Autorisés au Groupe Docker**
 
----
 
 Le daemon Docker se lie à un socket Unix au lieu d'un port TCP. Par défaut, ce socket Unix appartient à l'utilisateur root et les autres utilisateurs ne peuvent y accéder qu'en utilisant sudo. Le daemon Docker s'exécute toujours en tant qu'utilisateur root.
 
 Pour éviter d'avoir à utiliser sudo à chaque fois que vous lancez une commande Docker, créez un groupe Unix appelé docker et ajoutez-y des utilisateurs. Lorsque le daemon Docker démarre, il crée un socket Unix accessible par les membres du groupe docker.
 
-**Création du Groupe Docker :**
+### **Création du Groupe Docker :**
 
 ```bash
 sudo groupadd docker
 # Ceci pourrait déjà exister (depuis le programme d'installation du package)
 ```
 
-**Ajout de votre Utilisateur Actuel au Groupe Docker :**
+### **Ajout de votre Utilisateur Actuel au Groupe Docker :**
 
 ```bash
 sudo usermod -aG docker $USER
@@ -87,21 +84,21 @@ docker --version
 docker run hello-world
 ```
 
----
 
-**Conteneur : Installer et Configurer MySQL**
 
----
+## **Conteneur : Installer et Configurer MySQL**
+
+
 
 Téléchargez, configurez et exécutez le conteneur MySQL à l'aide des commandes suivantes :
 
-**Télécharger l'Image Officielle MySQL depuis DockerHub :**
+### **Télécharger l'Image Officielle MySQL depuis DockerHub :**
 
 ```bash
 docker pull mysql
 ```
 
-**Lancer l'Instance MySQL :**
+### **Lancer l'Instance MySQL :**
 
 ```bash
 docker run --name="MySQL" \
@@ -126,21 +123,21 @@ Pour obtenir l'adresse IP interne assignée à l'image MySQL, utilisez la comman
 docker inspect -f "{{ .NetworkSettings.IPAddress }}" MySQL
 ```
 
----
 
-**Conteneur : Installer et Configurer WordPress**
 
----
+## **Conteneur : Installer et Configurer WordPress**
+
+
 
 Téléchargez, configurez et exécutez le conteneur WordPress à l'aide des commandes suivantes :
 
-**Télécharger l'Image Officielle WordPress depuis DockerHub :**
+### **Télécharger l'Image Officielle WordPress depuis DockerHub :**
 
 ```bash
 docker pull wordpress
 ```
 
-**Lancer l'Instance WordPress :**
+### **Lancer l'Instance WordPress :**
 
 ```bash
 docker run --name="WordPress" \
@@ -164,7 +161,7 @@ wordpress
 
 Pour accéder à votre nouveau CMS WordPress depuis votre navigateur web, rendez-vous sur `http://localhost`.
 
-**Arrêter les Conteneurs :**
+### **Arrêter les Conteneurs :**
 
 Pour arrêter les conteneurs MySQL et WordPress, utilisez la commande suivante :
 
@@ -172,11 +169,11 @@ Pour arrêter les conteneurs MySQL et WordPress, utilisez la commande suivante :
 docker stop MySQL WordPress
 ```
 
----
 
-**Surveillance et Commandes utiles avec Docker CLI**
 
----
+## **Surveillance et Commandes utiles avec Docker CLI**
+
+
 
 Pour surveiller vos conteneurs Docker en cours d'exécution, vous pouvez utiliser la CLI Docker avec les commandes suivantes :
 
