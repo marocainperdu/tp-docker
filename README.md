@@ -173,3 +173,78 @@ docker stop MySQL WordPress
 ```
 
 ---
+
+**Surveillance et Commandes utiles avec Docker CLI**
+
+Pour surveiller vos conteneurs Docker en cours d'exécution, vous pouvez utiliser la CLI Docker avec les commandes suivantes :
+
+- Obtenir une liste des conteneurs en cours d'exécution :
+  ```bash
+  docker container ls
+  ```
+
+- Obtenir une liste de tous les conteneurs (y compris ceux arrêtés) :
+  ```bash
+  docker container ls --all
+  ```
+
+- Obtenir des informations détaillées sur un conteneur spécifique :
+  ```bash
+  docker container inspect CONTAINER_ID
+  ```
+
+- Obtenir des statistiques d'utilisation des ressources sur les conteneurs en cours d'exécution :
+  ```bash
+  docker container stats
+  ```
+
+- Afficher les processus en cours d'exécution dans un conteneur :
+  ```bash
+  docker top CONTAINER_ID
+  ```
+
+- Obtenir le mappage des ports pour un conteneur spécifique :
+  ```bash
+  docker port CONTAINER_ID
+  ```
+
+- Mettre en pause tous les processus en cours d'exécution dans un ou plusieurs conteneurs :
+  ```bash
+  docker pause CONTAINER_ID
+  ```
+
+  (Pour reprendre, utilisez `docker unpause CONTAINER_ID`)
+
+- Arrêter un ou plusieurs conteneurs :
+  ```bash
+  docker stop CONTAINER_ID
+  ```
+
+- Supprimer un conteneur arrêté :
+  ```bash
+  docker rm CONTAINER_ID
+  ```
+
+- Afficher les volumes :
+  ```bash
+  docker volume ls
+  ```
+
+- Afficher des informations sur l'ensemble du système Docker :
+  ```bash
+  docker system info
+  ```
+
+- Afficher les images Docker disponibles sur le système local :
+  ```bash
+  docker images
+  ```
+
+  (Pour des images spécifiques, utilisez `docker images NAME:TAG`)
+
+- Obtenir un shell interactif sur un conteneur en cours d'exécution :
+  ```bash
+  docker exec -it CONTAINER_ID /bin/bash
+  ```
+
+---
