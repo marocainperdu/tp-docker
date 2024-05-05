@@ -250,3 +250,76 @@ Pour surveiller vos conteneurs Docker en cours d'exécution, vous pouvez utilise
   ```
 
 ---
+
+## Partie 5 – Créer un script de déploiement Docker Compose
+
+Bien que la création de conteneurs Docker en ligne de commande fonctionne certainement, ce n'est pas le processus le plus facile à maintenir à grande échelle, en particulier lorsque plusieurs conteneurs doivent être lancés ensemble pour atteindre un objectif plus important. Docker Compose vous permet de définir une pile d'applications qui peut déployer plusieurs conteneurs à la fois.
+
+Commencez par installer Docker Compose :
+
+```bash
+DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
+mkdir -p $DOCKER_CONFIG/cli-plugins
+curl -SL https://github.com/docker/compose/releases/download/v2.17.2/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
+docker-compose --version  # Vérifiez l'installation
+```
+
+Créez un nouveau fichier `docker-compose.yml` sur votre système et définissez la spécification pour vos services MySQL et WordPress en utilisant YAML :
+
+```yaml
+version: '3.8'
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: Votre-utilisateur-WordPress
+      MYSQL_PASSWORD: Mot-de-passe-pour-utilisateur-WordPress
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - db:/var/lib/mysql
+
+  wordpress:
+    image: wordpress
+    depends_on:
+      - db
+    restart: always
+    ports:
+      - "80:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: Votre-utilisateur-WordPress
+      WORDPRESS_DB_PASSWORD: Mot-de-passe-pour-utilisateur-WordPress
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - wordpress:/var/www/html
+
+volumes:
+  db:
+  wordpress:
+```
+
+Assurez-vous de remplacer `Votre-utilisateur-WordPress` et `Mot-de-passe-pour-utilisateur-WordPress` par vos propres valeurs.
+
+Exécutez cette pile logicielle combinée avec Docker Compose :
+
+```bash
+docker-compose up -d
+```
+
+- L'option `-f` peut être utilisée pour spécifier un fichier YAML différent si nécessaire.
+- L'option `-d` permet d'exécuter les conteneurs en mode détaché.
+
+Vérifiez que votre pile logicielle fonctionne en accédant à WordPress dans votre navigateur à l'adresse `http://localhost`.
+
+Pour arrêter et supprimer vos conteneurs, utilisez la commande suivante :
+
+```bash
+docker-compose down
+```
+
+Cette commande arrêtera les conteneurs associés à votre pile logicielle et supprimera les volumes Docker créés pour eux.
+
+En suivant ces étapes, vous pourrez déployer et gérer facilement une pile logicielle combinant MySQL et WordPress à l'aide de Docker Compose. Assurez-vous de personnaliser les paramètres en fonction de vos besoins spécifiques.
