@@ -325,3 +325,65 @@ docker-compose down
 Cette commande arrêtera les conteneurs associés à votre pile logicielle et supprimera les volumes Docker créés pour eux.
 
 En suivant ces étapes, vous pourrez déployer et gérer facilement une pile logicielle combinant MySQL et WordPress à l'aide de Docker Compose. Assurez-vous de personnaliser les paramètres en fonction de vos besoins spécifiques.
+
+Voici le texte formaté en Markdown pour la Partie 6 :
+
+---
+
+## Conteneur : Installer et configurer le CMS Plone
+
+Plone est un système de gestion de contenu open source pour la création de sites web. L'architecture du site Plone comprend une application "serveur ZEO" qui sert de base de données centralisée, ainsi que plusieurs "clients ZEO" qui fonctionnent comme des serveurs web redondants en face de la base de données. Dans un environnement de production, un équilibreur de charge serait généralement utilisé en face des clients ZEO.
+  
+Créez un script Docker Compose YAML pour déployer Plone sur votre serveur en utilisant l'image fournie sur DockerHub : Plone. Votre script doit créer l'architecture suivante :
+
+- Un conteneur pour le serveur ZEO nommé `zeo` :
+  - Le conteneur doit être démarré avec la commande `zeo`.
+  - Le répertoire `/data` à l'intérieur du conteneur doit être stocké sur un volume Docker pour gérer les données du site web (un datastore centralisé géré par l'application ZEO).
+
+- Deux conteneurs clients ZEO nommés `instance1` et `instance2` :
+  - Chaque conteneur écoute sur le port 8080 en interne mais est mappé sur les ports 8081 et 8082 en externe pour éviter les conflits.
+  - Chaque conteneur dépend du conteneur `zeo` pour démarrer en premier.
+  - Chaque conteneur doit définir la variable d'environnement `ZEO_ADDRESS` sur le serveur ZEO, port 8080, afin de fonctionner comme un client ZEO dépendant du serveur ZEO et de son magasin de données.
+
+**Suivez ces étapes :**
+
+1. Récupérez l'image Plone depuis Docker Hub.
+2. Créez un fichier `docker-compose.yml` qui répond aux spécifications ci-dessus. Placez ce fichier dans un sous-répertoire (par exemple, `site_plone`) pour éviter toute confusion avec le fichier que vous avez créé précédemment.
+3. Exécutez `docker-compose` pour créer vos conteneurs.
+4. Accédez à votre nouveau site web Plone sur l'instance1 à l'adresse [http://localhost:8081](http://localhost:8081).
+5. Suivez l'assistant pour créer un nouveau site Plone.
+6. Utilisez les informations d'identification par défaut (admin / admin) pour l'administrateur.
+7. Après avoir créé votre nouveau site, visualisez-le depuis l'autre instance ([http://localhost:8082](http://localhost:8082)) pour confirmer que vous avez deux instances accédant au même magasin de données ZEO.
+
+´´´
+version: '3'
+
+services:
+  zeo:
+    image: plone
+    command: zeo
+    volumes:
+      - zeo_data:/data
+
+  instance1:
+    image: plone
+    ports:
+      - "8081:8080"
+    depends_on:
+      - zeo
+    environment:
+      ZEO_ADDRESS: "zeo:8080"
+
+  instance2:
+    image: plone
+    ports:
+      - "8082:8080"
+    depends_on:
+      - zeo
+    environment:
+      ZEO_ADDRESS: "zeo:8080"
+
+volumes:
+  zeo_data:
+
+´´´
