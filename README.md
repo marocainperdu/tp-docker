@@ -89,10 +89,6 @@ docker run hello-world
 
 ---
 
-Voici le texte formaté pour copier-coller dans LibreOffice Writer :
-
----
-
 **Partie 3 – Conteneur : Installer et Configurer MySQL**
 
 Téléchargez, configurez et exécutez le conteneur MySQL à l'aide des commandes suivantes :
