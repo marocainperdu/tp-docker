@@ -249,9 +249,9 @@ Pour surveiller vos conteneurs Docker en cours d'exécution, vous pouvez utilise
   docker exec -it CONTAINER_ID /bin/bash
   ```
 
----
 
-## Partie 5 – Créer un script de déploiement Docker Compose
+
+## Créer un script de déploiement Docker Compose
 
 Bien que la création de conteneurs Docker en ligne de commande fonctionne certainement, ce n'est pas le processus le plus facile à maintenir à grande échelle, en particulier lorsque plusieurs conteneurs doivent être lancés ensemble pour atteindre un objectif plus important. Docker Compose vous permet de définir une pile d'applications qui peut déployer plusieurs conteneurs à la fois.
 
