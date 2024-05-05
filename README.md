@@ -160,6 +160,8 @@ wordpress
 
 Pour accéder à votre nouveau CMS WordPress depuis votre navigateur web, rendez-vous sur `http://localhost`.
 
+![Livrable 3](https://github.com/marocainperdu/tp-docker/blob/main/Livrable%203.png)
+
 ### **Arrêter les Conteneurs :**
 
 Pour arrêter les conteneurs MySQL et WordPress, utilisez la commande suivante :
