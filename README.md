@@ -162,7 +162,7 @@ Pour accéder à votre nouveau CMS WordPress depuis votre navigateur web, rendez
 
 ![Livrable 3](https://github.com/marocainperdu/tp-docker/blob/main/Livrable%203%20bis%20.png)
 
-![Livrable 3](https://github.com/marocainperdu/tp-docker/blob/main/Livrable%203.png)
+![Livrable 3 bis](https://github.com/marocainperdu/tp-docker/blob/main/Livrable%203.png)
 
 ### **Arrêter les Conteneurs :**
 
@@ -352,6 +352,9 @@ Créez un script Docker Compose YAML pour déployer Plone sur votre serveur en u
 7. Après avoir créé votre nouveau site, visualisez-le depuis l'autre instance ([http://localhost:8082](http://localhost:8082)) pour confirmer que vous avez deux instances accédant au même magasin de données ZEO.
 
 ![Livrable 5](https://github.com/marocainperdu/tp-docker/blob/main/Livrable%205.png)
+
+---
+
 ![Livrable 5 bis](https://github.com/marocainperdu/tp-docker/blob/main/Livrable%205%20bis.png)
 
 ```yaml
