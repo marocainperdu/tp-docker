@@ -1,6 +1,6 @@
 # Atelier docker - veille technologique
 
-## **Procédure d'Installation de Docker Engine sur Ubuntu**
+## Procédure d'Installation de Docker Engine sur Ubuntu
 
 
 
@@ -52,24 +52,23 @@ sudo docker run hello-world
 
 Vous devriez voir un message confirmant le succès de l'installation.
 
-![Livrable 1](https://github.com/marocainperdu/tp-docker/blob/main/Livrable%201.png)
+![Image](./Livrable1.png)
 
-
-## **Ajout d'Utilisateurs Autorisés au Groupe Docker**
+## Ajout d'Utilisateurs Autorisés au Groupe Docker
 
 
 Le daemon Docker se lie à un socket Unix au lieu d'un port TCP. Par défaut, ce socket Unix appartient à l'utilisateur root et les autres utilisateurs ne peuvent y accéder qu'en utilisant sudo. Le daemon Docker s'exécute toujours en tant qu'utilisateur root.
 
 Pour éviter d'avoir à utiliser sudo à chaque fois que vous lancez une commande Docker, créez un groupe Unix appelé docker et ajoutez-y des utilisateurs. Lorsque le daemon Docker démarre, il crée un socket Unix accessible par les membres du groupe docker.
 
-### **Création du Groupe Docker :**
+### Création du Groupe Docker :
 
 ```bash
 sudo groupadd docker
 # Ceci pourrait déjà exister (depuis le programme d'installation du package)
 ```
 
-### **Ajout de votre Utilisateur Actuel au Groupe Docker :**
+### Ajout de votre Utilisateur Actuel au Groupe Docker :
 
 ```bash
 sudo usermod -aG docker $USER
@@ -83,30 +82,30 @@ Enfin, vérifiez que vous pouvez exécuter les commandes docker sans sudo :
 docker --version
 docker run hello-world
 ```
-![Livrable 2](https://github.com/marocainperdu/tp-docker/blob/main/Livrable%202.png)
+![Image](./Livrable2.png)
 
-## **Conteneur : Installer et Configurer MySQL**
+## Conteneur : Installer et Configurer MySQL
 
 
 
 Téléchargez, configurez et exécutez le conteneur MySQL à l'aide des commandes suivantes :
 
-### **Télécharger l'Image Officielle MySQL depuis DockerHub :**
+### Télécharger l'Image Officielle MySQL depuis DockerHub :
 
 ```bash
 docker pull mysql
 ```
 
-### **Lancer l'Instance MySQL :**
+### Lancer l'Instance MySQL :
 
 ```bash
 docker run --name="MySQL" \
 --network="bridge" \
 --mount='type=volume,src=db,dst=/var/lib/mysql' \
--e MYSQL_ROOT_PASSWORD="Jacob" \
+-e MYSQL_ROOT_PASSWORD="momo2" \
 -e MYSQL_DATABASE="wordpress" \
--e MYSQL_USER="Mario" \
--e MYSQL_PASSWORD="Jacob" \
+-e MYSQL_USER="momo" \
+-e MYSQL_PASSWORD="momo1" \
 -d \
 mysql:latest
 ```
@@ -124,28 +123,28 @@ docker inspect -f "{{ .NetworkSettings.IPAddress }}" MySQL
 
 
 
-## **Conteneur : Installer et Configurer WordPress**
+## Conteneur : Installer et Configurer WordPress
 
 
 
 Téléchargez, configurez et exécutez le conteneur WordPress à l'aide des commandes suivantes :
 
-### **Télécharger l'Image Officielle WordPress depuis DockerHub :**
+### Télécharger l'Image Officielle WordPress depuis DockerHub :
 
 ```bash
 docker pull wordpress
 ```
 
-### **Lancer l'Instance WordPress :**
+### Lancer l'Instance WordPress :
 
 ```bash
 docker run --name="WordPress" \
 --network="bridge" \
--p 80:80 \
+-p 8080:80 \
 --mount='type=volume,src=wordpress,dst=/var/www/html' \
--e WORDPRESS_DB_HOST="172.17.0.2" \
--e WORDPRESS_DB_USER=Mario \
--e WORDPRESS_DB_PASSWORD=Jacob \
+-e WORDPRESS_DB_HOST=172.17.0.2 \
+-e WORDPRESS_DB_USER=momo \
+-e WORDPRESS_DB_PASSWORD=momo1 \
 -e WORDPRESS_DB_NAME=wordpress \
 -e WORDPRESS_DEBUG=1 \
 -d \
@@ -160,11 +159,11 @@ wordpress
 
 Pour accéder à votre nouveau CMS WordPress depuis votre navigateur web, rendez-vous sur `http://localhost`.
 
-![Livrable 3](https://github.com/marocainperdu/tp-docker/blob/main/Livrable%203%20bis%20.png)
+![Image](./Livrable3.png)
 
-![Livrable 3 bis](https://github.com/marocainperdu/tp-docker/blob/main/Livrable%203.png)
+![Image](./Livrable3bis.png)
 
-### **Arrêter les Conteneurs :**
+### Arrêter les Conteneurs :
 
 Pour arrêter les conteneurs MySQL et WordPress, utilisez la commande suivante :
 
@@ -174,7 +173,7 @@ docker stop MySQL WordPress
 
 
 
-## **Surveillance et Commandes utiles avec Docker CLI**
+## Surveillance et Commandes utiles avec Docker CLI
 
 
 
@@ -314,7 +313,7 @@ docker-compose up -d
 
 Vérifiez que votre pile logicielle fonctionne en accédant à WordPress dans votre navigateur à l'adresse `http://localhost`.
 
-![Livrable 4](https://github.com/marocainperdu/tp-docker/blob/main/Livrable%204.png)
+![Image](./Livrable4.png)
 
 Pour arrêter et supprimer vos conteneurs, utilisez la commande suivante :
 
@@ -351,9 +350,9 @@ Créez un script Docker Compose YAML pour déployer Plone sur votre serveur en u
 6. Utilisez les informations d'identification par défaut (admin / admin) pour l'administrateur.
 7. Après avoir créé votre nouveau site, visualisez-le depuis l'autre instance ([http://localhost:8082](http://localhost:8082)) pour confirmer que vous avez deux instances accédant au même magasin de données ZEO.
 
-![Livrable 5](https://github.com/marocainperdu/tp-docker/blob/main/Livrable%205.png)
+![Image](./Livrable5.png))
 
-![Livrable 5 bis](https://github.com/marocainperdu/tp-docker/blob/main/Livrable%205%20bis.png)
+![Image](./Livrable5bis.png)
 
 ```yaml
 version: '3'
@@ -387,3 +386,4 @@ volumes:
   zeo_data:
 
 ```
+Fait par Mohamed Moustapha Niang
