@@ -171,4 +171,4 @@ docker stop MySQL WordPress
 ```
 
 ---
-![](https://imgur.com/us65qB4)
+![Livrable 1](https://imgur.com/us65qB4)
