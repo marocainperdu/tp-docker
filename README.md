@@ -89,7 +89,9 @@ docker run hello-world
 
 ---
 
-**Partie 3 – Conteneur : Installer et Configurer MySQL**
+**Conteneur : Installer et Configurer MySQL**
+
+---
 
 Téléchargez, configurez et exécutez le conteneur MySQL à l'aide des commandes suivantes :
 
@@ -126,7 +128,9 @@ docker inspect -f "{{ .NetworkSettings.IPAddress }}" MySQL
 
 ---
 
-**Partie 4 – Conteneur : Installer et Configurer WordPress**
+**Conteneur : Installer et Configurer WordPress**
+
+---
 
 Téléchargez, configurez et exécutez le conteneur WordPress à l'aide des commandes suivantes :
 
@@ -171,6 +175,8 @@ docker stop MySQL WordPress
 ---
 
 **Surveillance et Commandes utiles avec Docker CLI**
+
+---
 
 Pour surveiller vos conteneurs Docker en cours d'exécution, vous pouvez utiliser la CLI Docker avec les commandes suivantes :
 
