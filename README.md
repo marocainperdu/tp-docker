@@ -353,8 +353,6 @@ Créez un script Docker Compose YAML pour déployer Plone sur votre serveur en u
 
 ![Livrable 5](https://github.com/marocainperdu/tp-docker/blob/main/Livrable%205.png)
 
----
-
 ![Livrable 5 bis](https://github.com/marocainperdu/tp-docker/blob/main/Livrable%205%20bis.png)
 
 ```yaml
