@@ -326,10 +326,6 @@ Cette commande arrêtera les conteneurs associés à votre pile logicielle et su
 
 En suivant ces étapes, vous pourrez déployer et gérer facilement une pile logicielle combinant MySQL et WordPress à l'aide de Docker Compose. Assurez-vous de personnaliser les paramètres en fonction de vos besoins spécifiques.
 
-Voici le texte formaté en Markdown pour la Partie 6 :
-
----
-
 ## Conteneur : Installer et configurer le CMS Plone
 
 Plone est un système de gestion de contenu open source pour la création de sites web. L'architecture du site Plone comprend une application "serveur ZEO" qui sert de base de données centralisée, ainsi que plusieurs "clients ZEO" qui fonctionnent comme des serveurs web redondants en face de la base de données. Dans un environnement de production, un équilibreur de charge serait généralement utilisé en face des clients ZEO.
