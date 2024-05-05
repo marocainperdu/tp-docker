@@ -355,7 +355,7 @@ Créez un script Docker Compose YAML pour déployer Plone sur votre serveur en u
 6. Utilisez les informations d'identification par défaut (admin / admin) pour l'administrateur.
 7. Après avoir créé votre nouveau site, visualisez-le depuis l'autre instance ([http://localhost:8082](http://localhost:8082)) pour confirmer que vous avez deux instances accédant au même magasin de données ZEO.
 
-´´´
+```yaml
 version: '3'
 
 services:
@@ -386,4 +386,4 @@ services:
 volumes:
   zeo_data:
 
-´´´
+```
